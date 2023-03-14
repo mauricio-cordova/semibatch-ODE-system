@@ -30,36 +30,11 @@ k = [
 # Total time to be considered during the modeling (in min):
 simulation_time = 120
 
-# Data obtained for pH vs time:
-pH_time = np.array(
-    [
-        0,
-        1,
-        3,
-        5,
-        10,
-        15,
-        30,
-        45,
-        60,
-        120
-    ],
-    dtype=float,
-)
-pH_value = np.array(
-    [
-        1.50,
-        3.32,
-        3.12,
-        3.07,
-        3.09,
-        3.06,
-        3.07,
-        3.05,
-        2.97,
-        2.89
-    ]
-)
+# Loading the .csv file with the experimental data for pH vs time:
+pH_exp_data = np.genfromtxt("pH_experimental_data_fast.csv",dtype=None, skip_header=1, delimiter=",")
+
+pH_time = np.array([pH_exp_data[n][0] for n in range(len(pH_exp_data))])
+pH_value = np.array([pH_exp_data[n][1] for n in range(len(pH_exp_data))])
 
 # Point in time (in min) where the pH behavior suddenly flattens
 pH_cutoff_point = 1
@@ -183,6 +158,4 @@ concentrations.to_csv(output_filename, sep='\t', index=False)
 # Printing information message
 print(f"Output of the {output_filename} file completed")
 
-# Copying the results to the clipboard
-concentrations.to_clipboard(index=False)
 ### END CODE ###

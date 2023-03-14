@@ -37,62 +37,11 @@ NaClO_addition_speed = 2.0e-4 # Addition speed for NaClO (in L/pulse)
 NaClO_injection_interval = 6 # Time between each NaClO pulse (in min)
 NaClO_injection_time = 60 # Total NaClO injection time (in min)
 
-# Data obtained for pH vs time:
-pH_time = np.array(
-    [
-        0,
-        1,
-        3,
-        6,
-        9,
-        12,
-        15,
-        18,
-        21,
-        24,
-        27,
-        30,
-        33,
-        36,
-        39,
-        42,
-        45,
-        48,
-        51,
-        54,
-        57,
-        60,
-        120,
-    ],
-    dtype=float,
-)
-pH_value = np.array(
-    [
-        1.51,
-        1.57,
-        1.57,
-        1.59,
-        1.61,
-        1.65,
-        1.70,
-        1.77,
-        1.84,
-        1.96,
-        2.16,
-        2.48,
-        3.07,
-        3.42,
-        3.33,
-        3.32,
-        3.21,
-        3.15,
-        3.11,
-        3.09,
-        3.06,
-        3.07,
-        3.07,
-    ]
-)
+# Loading the .csv file with the experimental data for pH vs time:
+pH_exp_data = np.genfromtxt("pH_experimental_data_slow.csv",dtype=None, skip_header=1, delimiter=",")
+
+pH_time = np.array([pH_exp_data[n][0] for n in range(len(pH_exp_data))])
+pH_value = np.array([pH_exp_data[n][1] for n in range(len(pH_exp_data))])
 
 # Point in time where the pH behavior suddenly changes (in min)
 pH_cutoff_point = 36
@@ -246,6 +195,4 @@ concentrations.to_csv(output_filename, sep='\t', index=False)
 # Printing information message
 print(f"Output of the {output_filename} file completed")
 
-# Copying the results to the clipboard
-concentrations.to_clipboard(index=False)
 ### END CODE ###
