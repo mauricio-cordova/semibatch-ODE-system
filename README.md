@@ -1,5 +1,5 @@
 
-Python scripts accompanying the paper: <span style="color:lightblue">"Insights on the kinetic mechanism of manganese oxide precipitation from Mn2+ solutions using NaClO under acidic conditions, via experimental validation and numerical ODE fitting".</span>
+Python scripts accompanying the paper: <span style="color:lightblue">"Insights on the kinetic mechanism of manganese oxide precipitation from Mn2+ solutions using NaClO under highly acidic conditions, via experimental validation and numerical ODE fitting".</span>
 
 
 ## Requirements:
@@ -36,15 +36,15 @@ or
 ```
 depending on which HOCl addition speed is being modeled.
 
-Once started, the script will print the results of the pH, as a [H+] function fitting.
-These parameters are only used as values for the integration of the H+ change over time
+Once started, the script will look for the comma-separated values (.csv) files containing the experimental pH data (i.e. `pH_experimental_data_slow.csv` or `pH_experimental_data_fast.csv`), and then print the parameter results for the [H+] function fitting.
+These parameters are only used as values for the integration of H+ concentration change over time
 within the scope of the ODE system, and are only shown for information.
 
 ## Output
 
 The script returns a comma-separated values (.csv) file, which then can be opened
 using traditional spreadsheet software (such as Microsoft Excel, Google Sheets, 
-Libreoffice Calc, etc.). Depending on the HOCl addition speed, the name of the file is
+Libreoffice Calc, etc.). Also, depending on the HOCl addition speed, the name of the file is
 either `Mn_oxidation_slow_HOCl_concentrations.csv`, or `Mn_oxidation_fast_HOCl_concentrations.csv`.
 The output file contains the concentrations (in mol/L) for each chemical component of the system over time,
 namely:
